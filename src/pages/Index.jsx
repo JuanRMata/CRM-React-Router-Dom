@@ -1,72 +1,37 @@
 import { useLoaderData } from "react-router-dom"
-import Cliente from "../components/Cliente";
+import Pendiente from "../components/Pendiente";
+import { obtenerPendientes } from "../api/pendientes";
 
 export function loader() {
-
-  const clientes = [
-    {
-      id: 1,
-      nombre: 'Juan',
-      telefono: 102013313,
-      email: "juan@juan.com",
-      empresa: 'Codigo Con Juan'
-  },
-  {
-      id: 2,
-      nombre: 'Karen',
-      telefono: 138198313,
-      email: "karen@juan.com",
-      empresa: 'Codigo Con Juan'
-  },
-  {
-      id: 3,
-      nombre: 'Josue',
-      telefono: 31983913,
-      email: "josue@juan.com",
-      empresa: 'Codigo Con Juan'
-  },
-  {
-      id: 4,
-      nombre: 'Miguel',
-      telefono: 319381983,
-      email: "miguel@juan.com",
-      empresa: 'Codigo Con Juan'
-  },
-  {
-      id: 5,
-      nombre: 'Pedro',
-      telefono: 1398198938,
-      email: "pedro@juan.com",
-      empresa: 'Codigo Con Juan'
-  },
-];
-  return clientes
+  const pendientes = obtenerPendientes()
+  return pendientes
 }
 
 const Index = () => {
   
-  const clientes = useLoaderData()
+  const pendientes = useLoaderData()
 
   return (
     <>
-      <h1 className=" font-black text-4xl text-blue-900">Clientes</h1>
-      <p className=" mt-3">Administra tus clientes</p>
-      {clientes.length ? 
+      <h1 className=" font-black text-4xl text-blue-900">Tareas</h1>
+      <p className=" mt-3">Administra los Pendientes</p>
+      {pendientes.length ? 
         <table className="w-full bg-white shadow-lg mt-5 table-auto">
           <thead className="bg-blue-800 text-white">
             <tr>
-              <th className="p-2 border">Cliente</th>
+              <th className="p-2 border">Encargado/Area</th>
               <th className="p-2 border">Contacto</th>
+              <th className="p-2 border">Descripcion</th>
               <th className="p-2 border">Acciones</th>
             </tr>
           </thead>
 
             <tbody>
 
-              {clientes.map(cliente => (
-                <Cliente 
-                  cliente={cliente}
-                  key={cliente.id}
+              {pendientes.map(pendiente => (
+                <Pendiente 
+                  pendiente={pendiente}
+                  key={pendiente.id}
                 />
               ))}
 
@@ -76,7 +41,7 @@ const Index = () => {
 
        : 
 
-        <p className='text-center mt-10'>No hay clientes aun</p>
+        <p className='text-center mt-10'>No hay pendientes aun</p>
       }
     </>
   )

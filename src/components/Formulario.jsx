@@ -1,30 +1,32 @@
-const Formulario = ({cliente}) => {
+const Formulario = ({pendiente}) => {
     return (
         <>
             <div className="mb-4">
                 <label
                     className="text-gray-800"
-                    htmlFor="nombre"
-                >Nombre:</label>
+                    htmlFor="encargado"
+                >Encargado:</label>
                 <input 
-                    id="nombre"
+                    id="encargado"
                     type="text"
                     className="mt-2 block w-full p-3 bg-gray-50"
-                    placeholder="Nombre del Cliente"
-                    name="nombre"
+                    placeholder="Nombre del Encargado"
+                    name="encargado"
+                    defaultValue={pendiente?.encargado}
                 />
             </div>
-            <div className="mb-4">
+            <div className="mb-4"> 
                 <label
                     className="text-gray-800"
-                    htmlFor="empresa"
-                >Empresa:</label>
+                    htmlFor="area"
+                >Area:</label>
                 <input 
-                    id="empresa"
+                    id="area"
                     type="text"
                     className="mt-2 block w-full p-3 bg-gray-50"
-                    placeholder="Empresa del Cliente"
-                    name="empresa"
+                    placeholder="Nombre del Area"
+                    name="area"
+                    defaultValue={pendiente?.area}
                 />
             </div>
 
@@ -37,8 +39,9 @@ const Formulario = ({cliente}) => {
                     id="email"
                     type="email"
                     className="mt-2 block w-full p-3 bg-gray-50"
-                    placeholder="Email del Cliente"
+                    placeholder="Email del encargado"
                     name="email"
+                    defaultValue={pendiente?.email}
                 />
             </div>
 
@@ -51,8 +54,9 @@ const Formulario = ({cliente}) => {
                     id="telefono"
                     type="tel"
                     className="mt-2 block w-full p-3 bg-gray-50"
-                    placeholder="Teléfono del Cliente"
+                    placeholder="Teléfono del Encargado"
                     name="telefono"
+                    defaultValue={pendiente?.telefono}
                 />
             </div>
 
@@ -66,8 +70,9 @@ const Formulario = ({cliente}) => {
                     id="notas"
                     type="text"
                     className="mt-2 block w-full p-3 bg-gray-50 h-40 align-self"
-                    placeholder="Notas del Cliente"
+                    placeholder="Notas sobre la tarea"
                     name="notas"
+                    defaultValue={pendiente?.notas}
                 />
             </div>
         </>
